@@ -98,12 +98,18 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero" style="text-align:center;">
-  <div class="container">
-    <img src="static/img/NoteBook.png" alt="Howe Digital Systems"
-         style="max-width:520px;width:90%;display:block;margin:0 auto 36px;">
-    <p style="color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.75;">Custom software for businesses that need more than an off-the-shelf solution — booking systems, client portals, automations, and more.</p>
-    <div class="d-flex flex-wrap gap-3 justify-content-center">
+<style>
+  @keyframes heroFade { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+  .hero-logo { animation: heroFade .9s ease forwards; }
+  .hero-sub  { animation: heroFade .9s ease .3s both; }
+  .hero-btns { animation: heroFade .9s ease .55s both; }
+</style>
+<section class="hero" style="text-align:center;padding:60px 0;">
+  <div class="container-fluid px-0">
+    <img src="static/img/NoteBook.png" alt="Howe Digital Systems" class="hero-logo"
+         style="width:100%;max-width:900px;display:block;margin:0 auto 40px;">
+    <p class="hero-sub" style="color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.75;padding:0 20px;">Custom software for businesses that need more than an off-the-shelf solution — booking systems, client portals, automations, and more.</p>
+    <div class="hero-btns d-flex flex-wrap gap-3 justify-content-center">
       <a href="contact.html" class="btn btn-accent btn-lg">Start a Project</a>
       <a href="portfolio.html" class="btn btn-ghost btn-lg">See My Work</a>
     </div>
@@ -212,7 +218,7 @@
             <div class="portfolio-tag">Brochure Site · Static Hosting</div>
             <h5 class="mb-2">Applied Coatings</h5>
             <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px;">4-page business site for a Kalispell bathtub refinishing company. Estimate lead form, full photo gallery, Google reviews integration.</p>
-            <a href="https://spencer-howe.github.io/appliedcoatings/" target="_blank" class="btn btn-outline-accent btn-sm">Live Site <i class="bi bi-arrow-up-right ms-1"></i></a>
+            <a href="https://appliedcoatings406.com/" target="_blank" class="btn btn-outline-accent btn-sm">Live Site <i class="bi bi-arrow-up-right ms-1"></i></a>
           </div>
         </div>
       </div>
@@ -277,7 +283,7 @@
 
 <footer>
   <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-    <span>&copy; 2026 Howe Digital Systems — Kalispell, MT</span>
+    <span>&copy; 2026 Howe Digital Systems — Kalispell, MT · Wildomar, CA</span>
     <div class="d-flex gap-4">
       <a href="portfolio.html">Portfolio</a>
       <a href="services.html">Services</a>
