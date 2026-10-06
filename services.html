@@ -31,10 +31,15 @@
     .price-card.featured { border-color:var(--accent); background:linear-gradient(160deg,rgba(0,194,168,.07) 0%,var(--dark2) 60%); }
     .featured-badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#000; font-family:'Space Grotesk',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 16px; border-radius:20px; white-space:nowrap; }
     .price-amount { font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:700; letter-spacing:-1px; line-height:1; }
-    .price-amount sup { font-size:1.2rem; vertical-align:top; margin-top:8px; }
+    .price-amount sup { font-size:1.2rem; vertical-align:top; top:.35em; margin-right:2px; }
     .check-item { display:flex; gap:10px; align-items:flex-start; margin-bottom:10px; font-size:.88rem; color:rgba(255,255,255,.75); }
     .check-item i { color:var(--accent); margin-top:2px; flex-shrink:0; }
 
+    /* LAUNCH (ENTRY) */
+    .launch-card { background:var(--dark2); border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:32px; transition:border-color .25s; }
+    .launch-card:hover { border-color:rgba(0,194,168,.4); }
+    .tier-label { color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; text-align:center; margin:44px 0 22px; display:flex; align-items:center; gap:16px; }
+    .tier-label::before,.tier-label::after { content:''; flex:1; height:1px; background:rgba(255,255,255,.08); }
     /* SERVICE LIST */
     .service-row { background:var(--dark2); border:1px solid rgba(255,255,255,.07); border-radius:8px; padding:24px; transition:border-color .2s; }
     .service-row:hover { border-color:rgba(0,194,168,.3); }
@@ -81,8 +86,36 @@
     <div class="text-center mb-5">
       <div class="eyebrow">Website Packages</div>
       <div class="section-title">Pick your starting point</div>
-      <p style="color:var(--muted);margin-top:10px;font-size:.9rem;">All packages include mobile-friendly design, contact form, and hosting setup.</p>
     </div>
+
+    <div class="launch-card">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-4">
+          <div class="eyebrow mb-2">Entry Level</div>
+          <h3 style="font-weight:700;font-size:1.4rem;margin-bottom:8px;">Local Launch Page</h3>
+          <div class="price-amount mb-1"><sup>$</sup>350</div>
+          <p style="color:var(--muted);font-size:.82rem;margin-bottom:4px;">one-time setup</p>
+          <p style="color:var(--muted);font-size:.82rem;margin:0;">Hosting and maintenance billed separately — <a href="#plans" style="color:var(--accent);text-decoration:none;">plans from $25/mo</a></p>
+        </div>
+        <div class="col-lg-5">
+          <p style="color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.7;margin-bottom:16px;">A simple professional web presence without unnecessary complexity. One fast, mobile-friendly page with your services, photos, phone, email and the essentials, built for local businesses that need to look established online.</p>
+          <div class="row g-0">
+            <div class="col-sm-6"><div class="check-item"><i class="bi bi-check-circle-fill"></i>One professionally built page</div></div>
+            <div class="col-sm-6"><div class="check-item"><i class="bi bi-check-circle-fill"></i>Tap-to-call &amp; tap-to-email</div></div>
+            <div class="col-sm-6"><div class="check-item"><i class="bi bi-check-circle-fill"></i>Services, photos &amp; hours</div></div>
+            <div class="col-sm-6"><div class="check-item"><i class="bi bi-check-circle-fill"></i>Basic SEO &amp; HTTPS</div></div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <a href="contact.html?service=launch" class="btn btn-outline-accent w-100 mb-2">Start Your Launch Page</a>
+          <a href="launch.html" class="btn w-100" style="color:var(--muted);font-size:.85rem;">What's included <i class="bi bi-arrow-right ms-1"></i></a>
+          <p style="color:var(--muted);font-size:.76rem;text-align:center;margin:6px 0 0;">No forms, booking or extra pages, by design.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-label">Full Websites</div>
+    <p style="color:var(--muted);font-size:.9rem;text-align:center;margin:-8px 0 28px;">Multi-page sites with mobile-friendly design, contact form, and hosting setup.</p>
     <div class="row g-4 justify-content-center">
 
       <div class="col-md-4">
@@ -137,7 +170,7 @@
 </section>
 
 <!-- MAINTENANCE -->
-<section style="background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:70px 0;">
+<section id="plans" style="background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:70px 0;">
   <div class="container">
     <div class="row align-items-center g-5">
       <div class="col-lg-5">
