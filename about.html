@@ -33,6 +33,10 @@
     .social-link { display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,.7); text-decoration:none; font-size:.9rem; font-weight:500; padding:10px 18px; border:1px solid rgba(255,255,255,.12); border-radius:6px; transition:all .2s; }
     .social-link:hover { color:#fff; border-color:var(--accent); }
     .social-link i { color:var(--accent); }
+    .life-photo { position:relative; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:var(--dark2); height:100%; }
+    .life-photo img { width:100%; height:100%; aspect-ratio:3/4; object-fit:cover; display:block; }
+    .life-photo figcaption { position:absolute; left:0; right:0; bottom:0; padding:28px 14px 12px; background:linear-gradient(transparent,rgba(0,0,0,.8)); font-size:.8rem; color:rgba(255,255,255,.85); }
+    .vet-line { display:inline-flex; align-items:center; gap:8px; background:rgba(0,194,168,.1); border:1px solid rgba(0,194,168,.2); color:var(--accent); font-size:.78rem; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:6px 14px; border-radius:20px; margin-bottom:22px; }
     footer { background:#000; color:rgba(255,255,255,.35); font-size:.82rem; padding:28px 0; border-top:1px solid rgba(255,255,255,.05); }
     footer a { color:rgba(255,255,255,.35); text-decoration:none; }
     footer a:hover { color:var(--accent); }
@@ -67,7 +71,8 @@
         <div class="eyebrow">The Person Behind It</div>
         <h1 class="section-title mb-3">Spencer Howe</h1>
         <p style="color:var(--accent);font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;margin-bottom:4px;">Master of Science — Software Engineering – AI Engineering</p>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:24px;">Bachelor of Science — Software Engineering</p>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:18px;">Bachelor of Science — Software Engineering</p>
+        <div class="vet-line"><i class="bi bi-star-fill"></i>Marine Corps Veteran · Family-Owned · Kalispell, MT</div>
 
         <p style="color:rgba(255,255,255,.82);line-height:1.85;margin-bottom:18px;">I build custom software, AI-powered tools, automation, and digital systems for businesses that need more than an off-the-shelf solution.</p>
 
@@ -81,6 +86,7 @@
 
         <div class="d-flex flex-wrap gap-2 mb-4">
           <a href="https://github.com/Spencer-Howe" target="_blank" class="social-link"><i class="bi bi-github"></i>GitHub</a>
+          <a href="tel:+14066078859" class="social-link"><i class="bi bi-telephone-fill"></i>(406) 607-8859</a>
           <a href="mailto:spencer@howedigitalsystems.com" class="social-link"><i class="bi bi-envelope-fill"></i>spencer@howedigitalsystems.com</a>
         </div>
         <div class="d-flex flex-wrap gap-3">
@@ -93,6 +99,25 @@
              class="img-fluid rounded" style="max-width:400px;width:100%;border:1px solid rgba(255,255,255,.08);">
         <p style="color:var(--muted);font-size:.78rem;margin-top:10px;">Kalispell, Montana</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFE -->
+<section style="padding:60px 0;border-bottom:1px solid rgba(255,255,255,.06);">
+  <div class="container">
+    <div class="mb-4">
+      <div class="eyebrow">Off the Clock</div>
+      <h2 class="section-title mb-2">Marine. Husband. Rancher.</h2>
+      <p style="color:var(--muted);max-width:560px;line-height:1.7;margin:0;">When I'm not building software, I'm with my family or out at the ranch with the cattle.</p>
+    </div>
+    <div class="row g-3">
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-marine.jpg" alt="Spencer Howe in Marine Corps dress blues" loading="lazy"><figcaption>United States Marine Corps</figcaption></figure></div>
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-wedding.jpg" alt="Spencer Howe on his wedding day" loading="lazy"><figcaption>Wedding day</figcaption></figure></div>
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-us.jpg" alt="Spencer Howe and his wife" loading="lazy"><figcaption>Me and my wife</figcaption></figure></div>
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-family.jpg" alt="The Howe family" loading="lazy"><figcaption>Family</figcaption></figure></div>
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-calf.jpg" alt="Spencer bottle-feeding a Highland calf" loading="lazy"><figcaption>Bottle feeding at Howe Ranch</figcaption></figure></div>
+      <div class="col-6 col-md-4"><figure class="life-photo m-0"><img src="static/img/about-ranch.jpg" alt="Spencer with a Mini Highland calf" loading="lazy"><figcaption>One of our Mini Highlands</figcaption></figure></div>
     </div>
   </div>
 </section>
@@ -202,7 +227,7 @@
 
 <footer>
   <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-    <span>&copy; 2026 Howe Digital Systems — Kalispell, MT · Wildomar, CA</span>
+    <span>&copy; 2026 Howe Digital Systems — Kalispell, MT · Wildomar, CA · <a href="tel:+14066078859">(406) 607-8859</a></span>
     <div class="d-flex gap-4">
       <a href="portfolio.html">Portfolio</a>
       <a href="services.html">Services</a>
