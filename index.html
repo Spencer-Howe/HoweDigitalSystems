@@ -77,6 +77,11 @@
     footer { background:#000; color:rgba(255,255,255,.35); font-size:.82rem; padding:28px 0; border-top:1px solid rgba(255,255,255,.05); }
     footer a { color:rgba(255,255,255,.35); text-decoration:none; }
     footer a:hover { color:var(--accent); }
+    .topbar { background:#0a0a0a; border-bottom:1px solid rgba(255,255,255,.06); font-size:.8rem; }
+    .topbar a { color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
+    .topbar a:hover { color:var(--accent); }
+    .topbar .tb-social a { font-size:1rem; }
+    @media (max-width:575px) { .topbar .tb-email { display:none !important; } }
   </style>
   <script type="application/ld+json">
 {
@@ -114,6 +119,22 @@
   </script>
 </head>
 <body>
+
+<div class="topbar">
+  <div class="container d-flex justify-content-between align-items-center py-2 gap-3">
+    <div class="d-flex gap-3 align-items-center">
+      <a href="tel:+14066078859"><i class="bi bi-telephone-fill me-1"></i>(406) 607-8859</a>
+      <a href="mailto:contact@howedigitalsystems.com" class="tb-email d-flex align-items-center"><i class="bi bi-envelope-fill me-1"></i>contact@howedigitalsystems.com</a>
+    </div>
+    <div class="tb-social d-flex gap-3 align-items-center">
+      <a href="https://www.facebook.com/howedigitalsystems/" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="https://www.instagram.com/howedigitalsystems/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/howedigitalsystems/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/Spencer-Howe" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://g.page/r/CZ-iKO1aoXFSEBM" target="_blank" rel="noopener" aria-label="Google reviews"><i class="bi bi-google"></i></a>
+    </div>
+  </div>
+</div>
 
 <nav class="navbar navbar-expand-lg">
   <div class="container">
