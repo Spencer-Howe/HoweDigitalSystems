@@ -135,17 +135,17 @@
   <div class="container">
     <div class="eyebrow">Case Study · Field Service Scheduling</div>
     <h2 class="section-title mb-3">Trip Scheduler for a traveling hoof trimmer</h2>
-    <p style="color:var(--muted);max-width:720px;line-height:1.75;">A shearer and hoof trimmer covering hundreds of miles of rural country, with customers whose alpacas, sheep, goats and pigs need to be seen a few times a year. Shearing runs March through August, trims fill in around it, and she heads to each area based on weather and demand.</p>
+    <p style="color:var(--muted);max-width:720px;line-height:1.75;">Built for traveling hoof care: trimmers, farriers and shearers who cover big rural areas and see each customer a few times a year. The work is easy to plan once you know who's in. Finding out is the hard part.</p>
 
     <div class="row g-4 mt-2">
       <div class="col-md-6">
         <div class="ba-card ba-before h-100">
           <div class="ba-label"><i class="bi bi-phone me-2"></i>Before</div>
           <ul class="ba-list">
-            <li>Contacts saved in her phone as <em>“location · name · animals”</em> so she could search by town</li>
-            <li>Route lists kept in iPhone Notes, the only record of where she'd been and who she saw</li>
-            <li>Texting dates to customers one by one, then tracking who answered in her head</li>
-            <li>No real plan, just fitting trims before and after shearing season</li>
+            <li>Customer info scattered across phone contacts, old texts and memory</li>
+            <li>Runs planned on paper or in a notes app, with no easy history of past trips</li>
+            <li>Texting every customer one at a time to find out who's available</li>
+            <li>Chasing replies and rebuilding the day's route by hand</li>
           </ul>
         </div>
       </div>
@@ -173,7 +173,7 @@
         <div class="col-lg-5">
           <div class="step-num">1</div>
           <h3 class="step-title">Customers sign up once</h3>
-          <p class="step-text">A simple mobile page she can share anywhere: a text, social media, a business card. Customers enter their zip and animals, and the app files them into the right area using zip-prefix matching. “599” covers the whole Flathead, and a full zip can override it.</p>
+          <p class="step-text">A simple mobile page you can share anywhere: a text, social media, a business card. Customers enter their zip and animals, and the app files them into the right area using zip-prefix matching. “599” covers the whole Flathead, and a full zip can override it.</p>
         </div>
         <div class="col-lg-7">
           <div class="shot-row">
@@ -220,7 +220,7 @@
         <div class="col-lg-5">
           <div class="step-num">4</div>
           <h3 class="step-title">The route sheet builds itself</h3>
-          <p class="step-text">Confirmed customers land on the trip page with phone, zip, animals and visit notes, which is her route for the day. Anyone still waiting is listed underneath, and if they reply by text she taps <em>Confirm</em>. Every trip is saved, so “where did I go last fall?” is one click away.</p>
+          <p class="step-text">Confirmed customers land on the trip page with phone, zip, animals and visit notes, which is your route for the day. Anyone still waiting is listed underneath, and if they reply by text you tap <em>Confirm</em>. Every trip is saved, so “where did I go last fall?” is one click away.</p>
         </div>
         <div class="col-lg-7">
           <figure class="browser"><div class="browser-bar"><span></span><span></span><span></span><div class="browser-url">/admin · Flathead Valley · Oct 27–29</div></div><img src="static/img/automation/trip-route-sheet.webp" width="1600" height="1643" loading="lazy" alt="Trip page: send buttons, confirmed list with animals and notes, everyone else with confirm buttons"></figure>
@@ -231,11 +231,11 @@
     <div class="row g-4 mt-1">
       <div class="col-md-6">
         <figure class="browser mb-2"><div class="browser-bar"><span></span><span></span><span></span><div class="browser-url">/admin · Customers</div></div><img src="static/img/automation/customers.webp" width="1600" height="1143" loading="lazy" alt="Searchable customer list with CSV export"></figure>
-        <p class="caption">Searchable customer list. Her list is hers: <strong>Export → CSV</strong> any time.</p>
+        <p class="caption">Searchable customer list. Your list is yours: <strong>Export → CSV</strong> any time.</p>
       </div>
       <div class="col-md-6">
         <figure class="browser mb-2"><div class="browser-bar"><span></span><span></span><span></span><div class="browser-url">/admin · Areas</div></div><img src="static/img/automation/areas.webp" width="1600" height="1029" loading="lazy" alt="Areas defined by zip prefix"></figure>
-        <p class="caption">She draws her own areas by zip. Change one and every customer is regrouped instantly.</p>
+        <p class="caption">You draw your own areas by zip. Change one and every customer is regrouped instantly.</p>
       </div>
     </div>
 
@@ -271,7 +271,7 @@
           <li><i class="bi bi-diagram-3"></i><span><strong>Clean data model.</strong> Customers, Areas, Trips and Stops. A stop tracks each customer through projected → firm → confirmed or declined.</span></li>
           <li><i class="bi bi-arrow-repeat"></i><span><strong>Safe to press twice.</strong> Sends are idempotent: re-sending only emails people who haven't had that step, never someone who already answered.</span></li>
           <li><i class="bi bi-shield-lock"></i><span><strong>Private confirm links.</strong> Each stop gets a random URL-safe token, so customers confirm without accounts or passwords.</span></li>
-          <li><i class="bi bi-envelope-paper"></i><span><strong>Real email, no extra service.</strong> Batched through her own Gmail with one SMTP connection per send, so failures are reported and can be retried.</span></li>
+          <li><i class="bi bi-envelope-paper"></i><span><strong>Real email, no extra service.</strong> Batched through the business's own Gmail with one SMTP connection per send, so failures are reported and can be retried.</span></li>
           <li><i class="bi bi-hdd-network"></i><span><strong>Deployed with no open ports.</strong> Dockerized behind a Cloudflare Tunnel and HTTPS, with an automated test suite covering the full trip flow.</span></li>
         </ul>
       </div>
