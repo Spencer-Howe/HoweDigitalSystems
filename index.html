@@ -3,112 +3,280 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Howe Digital Systems | Booking systems and custom software, Kalispell MT</title>
+  <meta name="description" content="Spencer Howe builds booking systems, scheduling tools and custom software for small businesses, from Kalispell, Montana. See the Howe Ranch booking platform and 406 KAPLOW! live.">
+  <link rel="canonical" href="https://howedigitalsystems.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://howedigitalsystems.com/">
+  <meta property="og:title" content="Howe Digital Systems | Software that runs the business">
+  <meta property="og:description" content="Booking platforms, schedulers and a 3D snowplow map for the Flathead. Built in Kalispell by Spencer Howe.">
+  <meta property="og:image" content="https://howedigitalsystems.com/static/img/hr-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0b0d0d">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32.png">
   <link rel="apple-touch-icon" href="static/img/apple-touch-icon.png">
-  <title>Howe Digital Systems — Software Solutions for Small Business</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    @view-transition { navigation: auto; }
+
     :root {
-      --dark:   #0d0d0d;
-      --dark2:  #161616;
-      --dark3:  #1f1f1f;
-      --accent: #00c2a8;
-      --accent2:#00a08a;
-      --muted:  rgba(255,255,255,.5);
+      color-scheme: dark;
+      --bg: oklch(15% 0.006 180);
+      --bg-2: oklch(19% 0.008 180);
+      --bg-3: oklch(24% 0.01 180);
+      --line: oklch(100% 0 0 / 0.08);
+      --text: oklch(96% 0.005 180);
+      --muted: oklch(72% 0.01 180);
+      --faint: oklch(55% 0.01 180);
+      --accent: oklch(73% 0.13 178);     /* the logo teal, #00c2a8 */
+      --accent-ink: oklch(18% 0.03 178);
+      --ranch: oklch(58% 0.2 27);
+      --kaplow: oklch(84% 0.16 85);
+      --mono: 'JetBrains Mono', ui-monospace, monospace;
+      --display: 'Space Grotesk', system-ui, sans-serif;
+      --wrap: min(1180px, 100% - 2.5rem);
+      --radius: 14px;
     }
-    body { font-family:'Inter',sans-serif; background:var(--dark); color:#fff; margin:0; }
-    h1,h2,h3,h4,h5,h6 { font-family:'Space Grotesk',sans-serif; }
 
-    /* NAV */
-    .navbar { background:#000; backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,.06); padding:0; position:sticky; top:0; z-index:100; min-height:unset; }
-    .navbar-brand { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.15rem; color:#fff !important; letter-spacing:-.3px; }
-    .navbar-brand span { color:var(--accent); }
-    .nav-link { color:var(--muted) !important; font-size:.88rem; font-weight:500; transition:color .2s; }
-    .nav-link:hover,.nav-link.active { color:#fff !important; }
-    .navbar-toggler { border-color:rgba(255,255,255,.2); }
-    .navbar-toggler-icon { filter:invert(1); }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 400 1rem/1.65 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { font-family: var(--display); line-height: 1.08; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+    p { margin: 0; text-wrap: pretty; }
+    .wrap { width: var(--wrap); margin-inline: auto; }
+    .mono { font-family: var(--mono); font-size: .78rem; letter-spacing: .02em; }
+    .icon { width: 1em; height: 1em; fill: currentColor; flex: none; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-    /* BUTTONS */
-    .btn-accent { background:var(--accent); color:#000; font-family:'Space Grotesk',sans-serif; font-weight:700; border:none; padding:11px 28px; border-radius:4px; letter-spacing:-.2px; }
-    .btn-accent:hover { background:var(--accent2); color:#000; }
-    .btn-ghost { border:1.5px solid rgba(255,255,255,.2); color:rgba(255,255,255,.8); font-family:'Space Grotesk',sans-serif; font-weight:600; padding:10px 26px; border-radius:4px; background:transparent; }
-    .btn-ghost:hover { border-color:#fff; color:#fff; }
-    .btn-outline-accent { border:1.5px solid var(--accent); color:var(--accent); font-family:'Space Grotesk',sans-serif; font-weight:600; padding:9px 22px; border-radius:4px; background:transparent; }
-    .btn-outline-accent:hover { background:var(--accent); color:#000; }
+    /* ---------- header ---------- */
+    .site-head {
+      position: sticky; top: 0; z-index: 50;
+      background: oklch(12% 0.006 180 / .82);
+      backdrop-filter: blur(12px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-head .wrap { display: flex; align-items: center; gap: 1.5rem; height: 76px; }
+    .brand img { height: 46px; width: auto; }
+    .nav { display: flex; gap: 1.6rem; margin-left: auto; align-items: center; }
+    .nav a { text-decoration: none; color: var(--muted); font-size: .9rem; font-weight: 500; }
+    .nav a:hover, .nav a[aria-current] { color: var(--text); }
+    .nav a.btn-primary { color: var(--accent-ink); }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font: 600 .95rem/1 var(--display); text-decoration: none;
+      padding: .85rem 1.3rem; border-radius: 8px; border: 1.5px solid transparent;
+      transition: transform .15s, background .15s, border-color .15s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); }
+    .btn-primary:hover { background: oklch(80% 0.13 178); }
+    .btn-ghost { border-color: oklch(100% 0 0 / .2); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--text); }
+    .btn-sm { padding: .6rem 1rem; font-size: .85rem; }
+    .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: .5rem .6rem; font-size: 1.25rem; cursor: pointer; }
+    #menu {
+      inset: 0 0 auto auto; margin: 0; height: 100dvh; width: min(320px, 85vw);
+      background: var(--bg-2); color: var(--text); border: none; border-left: 1px solid var(--line);
+      padding: 1.5rem; flex-direction: column; gap: 1.1rem;
+    }
+    #menu:popover-open { display: flex; }
+    #menu::backdrop { background: oklch(0% 0 0 / .55); }
+    #menu a { text-decoration: none; font: 600 1.25rem var(--display); }
+    #menu .close { align-self: flex-end; background: none; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
+    @media (max-width: 900px) {
+      .nav { display: none; }
+      .menu-btn { display: inline-flex; }
+      .brand img { height: 40px; }
+    }
 
-    /* HERO */
-    .hero { min-height:88vh; display:flex; align-items:center; padding:80px 0; position:relative; overflow:hidden; }
-    .hero::before { content:''; position:absolute; top:-150px; right:-150px; width:550px; height:550px; background:radial-gradient(circle,rgba(0,194,168,.1) 0%,transparent 70%); pointer-events:none; }
-    .hero::after { content:''; position:absolute; bottom:-100px; left:-100px; width:400px; height:400px; background:radial-gradient(circle,rgba(0,194,168,.05) 0%,transparent 70%); pointer-events:none; }
-    .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(0,194,168,.1); border:1px solid rgba(0,194,168,.2); color:var(--accent); font-family:'Space Grotesk',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:6px 14px; border-radius:20px; margin-bottom:24px; }
-    .hero h1 { font-size:clamp(2.6rem,5.5vw,4.2rem); font-weight:700; line-height:1.08; letter-spacing:-.8px; margin-bottom:24px; }
-    .hero h1 em { color:var(--accent); font-style:normal; }
-    .hero p { color:var(--muted); font-size:1.05rem; max-width:540px; line-height:1.75; }
+    /* ---------- hero ---------- */
+    .hero { position: relative; padding: clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5rem); overflow: clip; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 70% 60% at 70% 30%, #000 20%, transparent 75%);
+    }
+    .hero::after {
+      content: ""; position: absolute; z-index: -1; width: 680px; aspect-ratio: 1; right: -200px; top: -260px;
+      background: radial-gradient(circle, oklch(73% 0.13 178 / .16), transparent 65%);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .kicker { display: inline-flex; align-items: center; gap: .6rem; color: var(--accent); margin-bottom: 1.4rem; }
+    .kicker::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .hero h1 { font-size: clamp(2.5rem, 5.4vw, 4.2rem); font-weight: 700; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero .lede { color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 34rem; margin: 1.5rem 0 2.2rem; }
+    .hero .ctas { display: flex; flex-wrap: wrap; gap: .8rem; }
 
-    /* SCROLLING TICKER */
-    .ticker-wrap { background:var(--accent); overflow:hidden; padding:10px 0; white-space:nowrap; }
-    .ticker-inner { display:inline-flex; animation:ticker 30s linear infinite; }
-    .ticker-item { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.85rem; color:#000; padding:0 32px; }
-    .ticker-sep { color:rgba(0,0,0,.4); }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* status panel: pings the real systems from your browser */
+    .status {
+      background: oklch(13% 0.006 180 / .9); border: 1px solid var(--line); border-radius: var(--radius);
+      font-family: var(--mono); font-size: .8rem; overflow: hidden;
+      box-shadow: 0 30px 80px -30px oklch(0% 0 0 / .8);
+    }
+    .status-bar { display: flex; gap: 6px; align-items: center; padding: .75rem 1rem; border-bottom: 1px solid var(--line); color: var(--faint); }
+    .status-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--bg-3); }
+    .status-bar span { margin-left: .6rem; }
+    .status ul { list-style: none; margin: 0; padding: .6rem 0; }
+    .status li { display: grid; grid-template-columns: auto 1fr auto; gap: .8rem; align-items: center; padding: .65rem 1rem; }
+    .status li + li { border-top: 1px dashed var(--line); }
+    .status a { text-decoration: none; }
+    .status a:hover { color: var(--accent); }
+    .status .what { display: block; color: var(--faint); font-size: .72rem; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--faint); }
+    .dot.up { background: oklch(78% 0.17 150); box-shadow: 0 0 0 0 oklch(78% 0.17 150 / .6); animation: ping 2.4s infinite; }
+    .dot.down { background: transparent; border: 1px solid var(--faint); }
+    .ms { color: var(--faint); min-width: 4.5ch; text-align: right; }
+    .status-foot { padding: .7rem 1rem; border-top: 1px solid var(--line); color: var(--faint); font-size: .7rem; }
+    @keyframes ping { 70% { box-shadow: 0 0 0 7px oklch(78% 0.17 150 / 0); } 100% { box-shadow: 0 0 0 0 oklch(78% 0.17 150 / 0); } }
 
-    /* SERVICES */
-    .service-card { background:var(--dark2); border:1px solid rgba(255,255,255,.07); border-radius:8px; padding:28px; height:100%; transition:border-color .25s,transform .25s; }
-    .service-card:hover { border-color:var(--accent); transform:translateY(-3px); }
-    .service-icon { font-size:1.8rem; color:var(--accent); margin-bottom:14px; }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 
-    /* PORTFOLIO */
-    .portfolio-card { background:var(--dark2); border:1px solid rgba(255,255,255,.07); border-radius:8px; overflow:hidden; transition:border-color .25s,transform .25s; height:100%; }
-    .portfolio-card:hover { border-color:var(--accent); transform:translateY(-4px); }
-    .portfolio-card-img { width:100%; height:200px; background:var(--dark3); display:flex; align-items:center; justify-content:center; }
-    .portfolio-card-img img { width:100%; height:200px; object-fit:cover; display:block; }
-    .portfolio-tag { font-size:.7rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+    /* ---------- shipped ---------- */
+    .section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); flex-wrap: wrap; }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    .section-head p { color: var(--muted); max-width: 30rem; }
+    .label { color: var(--accent); display: block; margin-bottom: .8rem; }
 
-    /* PROCESS */
-    .process-num { font-family:'Space Grotesk',sans-serif; font-size:2.6rem; font-weight:700; color:rgba(0,194,168,.12); line-height:1; }
+    .feature {
+      --tint: var(--accent);
+      container-type: inline-size;
+      position: relative; border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px);
+      background:
+        radial-gradient(120% 80% at 100% 0%, color-mix(in oklch, var(--tint) 14%, transparent), transparent 60%),
+        var(--bg-2);
+      overflow: hidden;
+    }
+    .feature + .feature { margin-top: 1.5rem; }
+    .feature-in { display: grid; grid-template-columns: 1fr; gap: 2rem; padding: clamp(1.5rem, 4cqi, 3rem); }
+    @container (min-width: 760px) {
+      .feature-in { grid-template-columns: 1.05fr 1fr; align-items: center; gap: 3rem; }
+      .feature.flip .media { order: -1; }
+    }
+    .feature .tag { color: var(--tint); }
+    .feature h3 { font-size: clamp(1.8rem, 5cqi, 2.8rem); margin: .5rem 0 1rem; }
+    .feature .copy > p { color: var(--muted); max-width: 36rem; }
+    .checks { list-style: none; padding: 0; margin: 1.4rem 0; display: grid; gap: .55rem; }
+    .checks li { display: flex; gap: .7rem; align-items: baseline; font-size: .95rem; }
+    .checks li::before { content: "→"; font-family: var(--mono); color: var(--tint); }
+    @container (min-width: 520px) { .checks { grid-template-columns: 1fr 1fr; column-gap: 1.5rem; } }
+    .stats { display: flex; gap: 2rem; flex-wrap: wrap; margin: 1.6rem 0; padding: 1.1rem 0; border-block: 1px solid var(--line); }
+    .stats b { display: block; font: 700 1.6rem/1 var(--display); color: var(--text); }
+    .stats span { color: var(--faint); font-family: var(--mono); font-size: .72rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.2rem 0 1.6rem; }
+    .pill { font-family: var(--mono); font-size: .7rem; padding: .3rem .6rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: oklch(100% 0 0 / .03); }
+    .row { display: flex; flex-wrap: wrap; gap: .7rem; align-items: center; }
 
-    /* SECTION LABELS */
-    .eyebrow { color:var(--accent); font-size:.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px; }
-    .section-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(1.6rem,3vw,2.2rem); letter-spacing:-.3px; }
+    .ranch { --tint: var(--ranch); }
+    .ranch .media img { border-radius: var(--radius); width: 100%; }
 
-    footer { background:#000; color:rgba(255,255,255,.35); font-size:.82rem; padding:28px 0; border-top:1px solid rgba(255,255,255,.05); }
-    footer a { color:rgba(255,255,255,.35); text-decoration:none; }
-    footer a:hover { color:var(--accent); }
-    .topbar { background:#0a0a0a; border-bottom:1px solid rgba(255,255,255,.06); font-size:.8rem; }
-    .topbar a { color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; }
-    .topbar a:hover { color:var(--accent); }
-    .topbar .tb-social a { font-size:1rem; }
-    @media (max-width:575px) { .topbar .tb-email { display:none !important; } }
+    .kaplow { --tint: var(--kaplow); }
+    .kaplow .btn-primary { background: var(--kaplow); color: oklch(20% 0.04 85); }
+    .kaplow .slogan { font: 700 clamp(1.1rem, 3.2cqi, 1.45rem)/1.25 var(--display); color: var(--text); margin-bottom: 1rem; }
+    .kaplow .slogan span { color: var(--kaplow); }
+    .phone {
+      width: min(300px, 78%); margin-inline: auto; aspect-ratio: 9 / 19.5;
+      border-radius: 42px; padding: 10px; background: oklch(8% 0 0);
+      border: 1px solid oklch(100% 0 0 / .14);
+      box-shadow: 0 40px 90px -30px oklch(84% 0.16 85 / .35), inset 0 0 0 2px oklch(30% 0 0);
+      rotate: 3deg;
+    }
+    .phone video { width: 100%; height: 100%; object-fit: cover; border-radius: 33px; background: #1c2240; }
+
+    .trip { --tint: var(--accent); }
+    .trip .shots { display: grid; grid-template-columns: 1fr 1.7fr; gap: .8rem; align-items: start; }
+    .trip .shots img { border-radius: 10px; border: 1px solid var(--line); width: 100%; height: 420px; object-fit: cover; object-position: top; }
+    .trip .shots img:last-child { margin-top: 2.5rem; }
+
+    /* ---------- what I build ---------- */
+    .build { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .build > div { background: var(--bg); padding: 1.6rem; }
+    .build h3 { font-size: 1.15rem; margin-bottom: .5rem; }
+    .build p { color: var(--muted); font-size: .92rem; }
+    .build .mono { color: var(--accent); display: block; margin-bottom: .9rem; }
+    .build .web { background: var(--bg-2); }
+
+    .strip { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center; padding: 1.8rem 2rem; border: 1px dashed oklch(100% 0 0 / .16); border-radius: var(--radius); margin-top: 1.5rem; }
+    .strip p { color: var(--muted); }
+    .strip strong { color: var(--text); font-family: var(--display); font-size: 1.2rem; display: block; margin-bottom: .3rem; }
+    @media (max-width: 700px) { .strip { grid-template-columns: 1fr; } }
+
+    /* ---------- me ---------- */
+    .me { display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+    .me img { border-radius: var(--radius); width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: saturate(.9); }
+    .me h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 1.2rem; }
+    .me p { color: var(--muted); max-width: 38rem; }
+    .me p + p { margin-top: 1rem; }
+    .resume { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: .5rem; font-family: var(--mono); font-size: .82rem; }
+    .resume li { display: grid; grid-template-columns: 9ch 1fr; gap: 1rem; }
+    .resume span { color: var(--faint); }
+    @media (max-width: 760px) { .me { grid-template-columns: 1fr; } .me img { max-width: 340px; } }
+
+    /* ---------- cta ---------- */
+    .cta { text-align: center; border-top: 1px solid var(--line); background: radial-gradient(60% 100% at 50% 0%, oklch(73% 0.13 178 / .1), transparent 70%); }
+    .cta h2 { font-size: clamp(2rem, 5vw, 3.4rem); max-width: 18ch; margin: 0 auto 1.2rem; }
+    .cta p { color: var(--muted); max-width: 34rem; margin: 0 auto 2rem; }
+    .cta .row { justify-content: center; }
+
+    /* ---------- footer ---------- */
+    footer { border-top: 1px solid var(--line); padding: 2rem 0 2.5rem; color: var(--faint); font-size: .85rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    footer .icon { width: 1.05rem; height: 1.05rem; }
+    .built { width: 100%; font-family: var(--mono); font-size: .72rem; color: oklch(45% 0.01 180); }
+
+    /* ---------- motion ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-copy > * { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+      .hero-copy > :nth-child(2) { animation-delay: .08s; }
+      .hero-copy > :nth-child(3) { animation-delay: .16s; }
+      .hero-copy > :nth-child(4) { animation-delay: .24s; }
+      .status { animation: rise .9s .3s cubic-bezier(.2,.7,.2,1) both; }
+      @supports (animation-timeline: view()) {
+        .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+        .phone { animation: tilt linear both; animation-timeline: view(); animation-range: entry 10% cover 60%; }
+      }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .dot.up { animation: none; } }
+    @keyframes rise { from { opacity: 0; translate: 0 24px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes tilt { from { rotate: -4deg; translate: 0 40px; } to { rotate: 3deg; translate: 0 0; } }
   </style>
   <script type="application/ld+json">
-{
+  {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Howe Digital Systems",
     "url": "https://howedigitalsystems.com/",
     "logo": "https://howedigitalsystems.com/static/img/hds-logo.png",
-    "image": "https://howedigitalsystems.com/static/img/NoteBook.png",
-    "description": "Professional websites, booking systems, client portals and automation for small businesses, from a simple one-page site to fully custom software.",
+    "image": "https://howedigitalsystems.com/static/img/hr-preview.jpg",
+    "description": "Booking systems, scheduling tools, custom software and websites for small businesses, plus local tech setup in the Flathead Valley.",
     "telephone": "+1-406-607-8859",
     "email": "contact@howedigitalsystems.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "MT",
-      "addressCountry": "US"
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "United States"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Spencer Howe",
-      "sameAs": ["https://www.linkedin.com/in/spencerhowe/"]
-    },
-    "priceRange": "$$",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kalispell", "addressRegion": "MT", "addressCountry": "US" },
+    "areaServed": [
+      { "@type": "City", "name": "Kalispell, MT" },
+      { "@type": "City", "name": "Whitefish, MT" },
+      { "@type": "City", "name": "Columbia Falls, MT" },
+      { "@type": "City", "name": "Bigfork, MT" },
+      { "@type": "Country", "name": "United States" }
+    ],
+    "founder": { "@type": "Person", "name": "Spencer Howe", "sameAs": ["https://www.linkedin.com/in/spencerhowe/", "https://github.com/Spencer-Howe"] },
     "sameAs": [
       "https://www.instagram.com/howedigitalsystems/",
       "https://www.facebook.com/profile.php?id=61596608914893",
@@ -120,271 +288,284 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="container d-flex justify-content-between align-items-center py-2 gap-3">
-    <div class="d-flex gap-3 align-items-center">
-      <a href="tel:+14066078859"><i class="bi bi-telephone-fill me-1"></i>(406) 607-8859</a>
-      <a href="mailto:contact@howedigitalsystems.com" class="tb-email d-flex align-items-center"><i class="bi bi-envelope-fill me-1"></i>contact@howedigitalsystems.com</a>
-    </div>
-    <div class="tb-social d-flex gap-3 align-items-center">
-      <a href="https://www.instagram.com/howedigitalsystems/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61596608914893" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/spencerhowe/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      <a href="https://github.com/Spencer-Howe" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github"></i></a>
-      <a href="https://g.page/r/CZ-iKO1aoXFSEBM" target="_blank" rel="noopener" aria-label="Google reviews"><i class="bi bi-google"></i></a>
-    </div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-arrow-up-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/></symbol><symbol id="i-envelope-fill" viewBox="0 0 16 16"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/></symbol><symbol id="i-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></symbol><symbol id="i-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></symbol><symbol id="i-google" viewBox="0 0 16 16"><path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/></symbol><symbol id="i-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></symbol><symbol id="i-linkedin" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></symbol><symbol id="i-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></symbol><symbol id="i-telephone-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/></symbol><symbol id="i-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></symbol></svg>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="static/media/logo.png" alt="Howe Digital Systems" width="640" height="186"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#shipped">Work</a>
+      <a href="automation.html">Automation</a>
+      <a href="tech.html">Tech Setup</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a class="btn btn-primary btn-sm" href="contact.html">Start a project</a>
+    </nav>
+    <button class="menu-btn" popovertarget="menu" aria-label="Open menu"><svg class="icon"><use href="#i-list"/></svg></button>
   </div>
+</header>
+<div id="menu" popover>
+  <button class="close" popovertarget="menu" popovertargetaction="hide" aria-label="Close menu"><svg class="icon"><use href="#i-x-lg"/></svg></button>
+  <a href="#shipped" popovertarget="menu" popovertargetaction="hide">Work</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="automation.html">Automation</a>
+  <a href="tech.html">Tech Setup</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a class="btn btn-primary" href="tel:+14066078859" style="margin-top:auto;font-size:1rem"><svg class="icon"><use href="#i-telephone-fill"/></svg>(406) 607-8859</a>
 </div>
 
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="static/img/hds-logo.png" alt="Howe Digital Systems" style="height:140px !important;width:auto;display:block;"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto gap-lg-3">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="automation.html">Automation</a></li>
-        <li class="nav-item"><a class="nav-link" href="tech.html">Tech Setup</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn-accent ms-lg-4 mt-2 mt-lg-0">Get a Quote</a>
-    </div>
-  </div>
-</nav>
+<main>
 
 <!-- HERO -->
-<style>
-  @keyframes heroFade { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-  .hero-head { animation: heroFade .9s ease forwards; }
-  .hero-logo { animation: heroFade .9s ease .15s both; }
-  .hero-sub  { animation: heroFade .9s ease .3s both; }
-  .hero-btns { animation: heroFade .9s ease .55s both; }
-</style>
-<section class="hero" style="text-align:center;padding:60px 0;">
-  <div class="container-fluid px-0">
-    <div class="hero-head" style="padding:0 20px;margin-bottom:32px;">
-      <h1 style="font-weight:700;font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.5px;line-height:1.15;max-width:760px;margin:0 auto 14px;">Websites &amp; software for small businesses</h1>
-      <p style="color:var(--muted);font-size:.95rem;margin:0 auto;"><i class="bi bi-star-fill" style="color:var(--accent);margin-right:6px;"></i>Built by a Marine Corps veteran. Based in Montana, working with businesses nationwide.</p>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker mono">Spencer Howe · Kalispell, Montana</span>
+      <h1>Not just a website.<br><em>The software behind the business.</em></h1>
+      <p class="lede">Booking systems that take the payment and send the waiver. Schedulers that plan the trip. A 3D snowplow map, because the valley needed one. Built here by a Marine who spent 12 years fixing diesels before writing code.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#shipped">See what I've shipped</a>
+        <a class="btn btn-ghost" href="contact.html">Tell me what you do by hand</a>
+      </div>
     </div>
-    <img src="static/img/NoteBook.png" alt="Howe Ranch booking site built by Howe Digital Systems" class="hero-logo"
-         style="width:100%;max-width:900px;display:block;margin:0 auto 40px;">
-    <p class="hero-sub" style="color:var(--muted);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.75;padding:0 20px;">Professional websites, booking systems, client portals and automation, from a simple one-page site to fully custom software.</p>
-    <div class="hero-btns d-flex flex-wrap gap-3 justify-content-center">
-      <a href="contact.html" class="btn btn-accent btn-lg">Start a Project</a>
-      <a href="portfolio.html" class="btn btn-ghost btn-lg">See My Work</a>
+
+    <div class="status" aria-label="Systems I built and run">
+      <div class="status-bar"><i></i><i></i><i></i><span>~/howe-digital $ status</span></div>
+      <ul>
+        <li data-ping="https://thehoweranchregistration.com/">
+          <span class="dot" aria-hidden="true"></span>
+          <a href="https://thehoweranchregistration.com/" target="_blank" rel="noopener">thehoweranchregistration.com<span class="what">booking + payments · in production</span></a>
+          <span class="ms">…</span>
+        </li>
+        <li data-ping="https://406kaplow.com/">
+          <span class="dot" aria-hidden="true"></span>
+          <a href="https://406kaplow.com/" target="_blank" rel="noopener">406kaplow.com<span class="what">flathead snow board · 3D map</span></a>
+          <span class="ms">…</span>
+        </li>
+        <li data-ping="https://demo.howedigitalsystems.com/">
+          <span class="dot" aria-hidden="true"></span>
+          <a href="https://demo.howedigitalsystems.com/admin/" target="_blank" rel="noopener">demo.howedigitalsystems.com<span class="what">trip scheduler · resets hourly</span></a>
+          <span class="ms">…</span>
+        </li>
+      </ul>
+      <div class="status-foot">checked live from your browser just now</div>
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span class="ticker-item">Software Solutions</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Websites</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Business Apps</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Hosting</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Client Portals</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Booking Systems</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Dashboards</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Automations</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Internal Tools</span><span class="ticker-item ticker-sep">•</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item">Software Solutions</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Websites</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Business Apps</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Hosting</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Client Portals</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Booking Systems</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Dashboards</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Automations</span><span class="ticker-item ticker-sep">•</span>
-    <span class="ticker-item">Internal Tools</span><span class="ticker-item ticker-sep">•</span>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section class="py-5" style="padding:70px 0 !important;">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="eyebrow">What We Build</div>
-      <div class="section-title">Your sales &amp; scheduling — fully automated</div>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-cash-coin"></i></div>
-          <h6 class="mb-2">Online Booking &amp; Payments</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">Customers book, pay deposits, and receive confirmations entirely online. Zero phone calls for standard jobs.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-send-check"></i></div>
-          <h6 class="mb-2">Auto Scheduling &amp; Emails</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">Estimates approved, jobs scheduled, and confirmation emails sent automatically — no manual follow-up.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-grid-1x2"></i></div>
-          <h6 class="mb-2">Admin Portals</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">Review estimates, approve jobs, and manage your pipeline from one clean dashboard.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-lightning-charge"></i></div>
-          <h6 class="mb-2">Automations</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">Connect your tools, automate repetitive tasks, and stop doing things manually that software can handle.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-server"></i></div>
-          <h6 class="mb-2">Hosting &amp; Maintenance</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">We host, monitor, and maintain your site. Updates and edits handled — you don't touch a thing.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card">
-          <div class="service-icon"><i class="bi bi-tools"></i></div>
-          <h6 class="mb-2">Custom Builds</h6>
-          <p style="color:var(--muted);font-size:.88rem;margin:0;">Got something specific in mind? We scope it, price it flat, and build exactly what you need.</p>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-5">
-      <a href="services.html" class="btn btn-outline-accent btn-lg">See Pricing</a>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO PREVIEW -->
-<section style="background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:70px 0;">
-  <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-5">
+<!-- SHIPPED -->
+<section class="section" id="shipped" style="padding-top:2rem">
+  <div class="wrap">
+    <div class="section-head">
       <div>
-        <div class="eyebrow">Our Work</div>
-        <div class="section-title">Recent Projects</div>
+        <span class="label mono">// shipped and running</span>
+        <h2>Things I built that are live right now.</h2>
       </div>
-      <a href="portfolio.html" class="btn btn-outline-accent d-none d-md-inline-block">All Projects</a>
+      <p>Not mockups. Open any of them on your phone.</p>
     </div>
-    <div class="row g-4">
-      <div class="col-lg-4 col-md-6">
-        <div class="portfolio-card">
-          <div class="portfolio-card-img">
-            <img src="static/img/sd-preview.jpg" alt="Smoked Delights BBQ" onerror="this.parentElement.innerHTML='<div style=\'color:var(--muted);font-size:.85rem;\'>Smoked Delights BBQ</div>'">
+
+    <!-- HOWE RANCH -->
+    <article class="feature ranch reveal">
+      <div class="feature-in">
+        <div class="copy">
+          <span class="tag mono">01 · Flagship</span>
+          <h3>The Howe Ranch booking platform</h3>
+          <p>The registration and ticketing system for a Kalispell agritourism ranch. I've been building it since 2024 and it runs the business: guests pick an experience, choose a date and time, pay online, sign their waiver, and get their confirmation and reminders without anyone picking up the phone.</p>
+          <ul class="checks">
+            <li>Date and time slots with capacity</li>
+            <li>PayPal payments confirmed by webhook</li>
+            <li>Digital waivers and signed agreement PDFs</li>
+            <li>Private events: request, approve, pay</li>
+            <li>Gift cards</li>
+            <li>Confirmations, reminders and follow-ups</li>
+            <li>QR passes, scanned by a staff Android app</li>
+            <li>Admin dashboard for the whole operation</li>
+          </ul>
+          <div class="stats">
+            <div><b>2024</b><span>in development since</span></div>
+            <div><b>400+</b><span>commits</span></div>
+            <div><b>Live</b><span>taking real bookings</span></div>
           </div>
-          <div style="padding:22px;">
-            <div class="portfolio-tag">Catering Site · Event Booking</div>
-            <h5 class="mb-2">Smoked Delights BBQ</h5>
-            <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px;">Mobile-first site for a Norco, CA BBQ caterer. Full menus, gallery, Google reviews, and a booking form that texts event details to the owner.</p>
-            <a href="https://smokeddelightscatering.com/" target="_blank" class="btn btn-outline-accent btn-sm">Live Site <i class="bi bi-arrow-up-right ms-1"></i></a>
+          <div class="pills">
+            <span class="pill">Python</span><span class="pill">Flask</span><span class="pill">PostgreSQL</span><span class="pill">PayPal API</span><span class="pill">Kotlin + ML Kit</span><span class="pill">Docker</span><span class="pill">AWS Lightsail</span><span class="pill">Cloudflare</span>
+          </div>
+          <div class="row">
+            <a class="btn btn-primary" href="https://thehoweranchregistration.com/" target="_blank" rel="noopener">Open the live site <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="btn btn-ghost" href="automation.html">How it works</a>
+          </div>
+        </div>
+        <div class="media">
+          <img src="static/media/hr-phones.webp" alt="The Howe Ranch booking site on three phones: experience list, event page and date picker" width="1000" height="625" loading="lazy">
+        </div>
+      </div>
+    </article>
+
+    <!-- KAPLOW -->
+    <article class="feature kaplow flip reveal">
+      <div class="feature-in">
+        <div class="copy">
+          <span class="tag mono">02 · For the valley</span>
+          <h3>406 KAPLOW!</h3>
+          <p class="slogan">Snowed in? <span>Not anymore, sucker.</span></p>
+          <p>A free board I built for the Flathead that connects people who are snowed in with people who plow and shovel. Plows show up on a 3D map made from real elevation and road data, drivers design their own badge and sign in with an emailed link, and approved drivers get an email when a driveway is posted in their town. The mascot is Gary. Gary is a snow berm.</p>
+          <div class="pills">
+            <span class="pill">Python / Flask</span><span class="pill">PostgreSQL</span><span class="pill">Three.js</span><span class="pill">Real elevation data</span><span class="pill">Magic-link sign in</span><span class="pill">Docker</span><span class="pill">Cloudflare Tunnel</span>
+          </div>
+          <div class="row">
+            <a class="btn btn-primary" href="https://406kaplow.com/" target="_blank" rel="noopener">Go to 406kaplow.com <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+          </div>
+        </div>
+        <div class="media">
+          <div class="phone">
+            <video src="static/media/kaplow-loop.mp4" poster="static/media/kaplow-poster.jpg" muted loop playsinline preload="none" aria-label="406 KAPLOW! promo: Gary, the 3D Flathead map and the plow picker"></video>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="portfolio-card">
-          <div class="portfolio-card-img">
-            <img src="static/img/ac-preview.jpg" alt="Applied Coatings" onerror="this.parentElement.innerHTML='<div style=\'color:var(--muted);font-size:.85rem;\'>Applied Coatings</div>'">
-          </div>
-          <div style="padding:22px;">
-            <div class="portfolio-tag">Brochure Site · Static Hosting</div>
-            <h5 class="mb-2">Applied Coatings</h5>
-            <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px;">4-page business site for a Kalispell bathtub refinishing company. Estimate lead form, full photo gallery, Google reviews integration.</p>
-            <a href="https://appliedcoatings406.com/" target="_blank" class="btn btn-outline-accent btn-sm">Live Site <i class="bi bi-arrow-up-right ms-1"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="portfolio-card">
-          <div class="portfolio-card-img">
-            <img src="static/img/hr-preview.jpg" alt="Howe Ranch" onerror="this.parentElement.innerHTML='<div style=\'color:var(--muted);font-size:.85rem;\'>Howe Ranch</div>'">
-          </div>
-          <div style="padding:22px;">
-            <div class="portfolio-tag">Booking System · Custom App</div>
-            <h5 class="mb-2">Howe Ranch</h5>
-            <p style="color:var(--muted);font-size:.88rem;margin-bottom:16px;">Full event registration and ticketing platform for a Montana ranch. Online payments, booking management, and custom event pages.</p>
-            <a href="https://thehoweranchregistration.com/" target="_blank" class="btn btn-outline-accent btn-sm">Live Site <i class="bi bi-arrow-up-right ms-1"></i></a>
+    </article>
+
+    <!-- TRIP SCHEDULER -->
+    <article class="feature trip reveal">
+      <div class="feature-in">
+        <div class="copy">
+          <span class="tag mono">03 · Try it yourself</span>
+          <h3>Trip Scheduler for traveling hoof care</h3>
+          <p>Replaces phone contacts, notes and one-by-one texts. Customers sign up once and get grouped by area, the owner plans a trip and sends dates in one click, customers tap to confirm, and the route sheet builds itself.</p>
+          <p style="margin-top:1rem">The demo runs on fake Montana customers, catches every email, and resets every hour. Plan a trip, hit send, break whatever you like.</p>
+          <div class="row" style="margin-top:1.6rem">
+            <a class="btn btn-primary" href="https://demo.howedigitalsystems.com/admin/" target="_blank" rel="noopener">Open the demo <svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+            <a class="btn btn-ghost" href="automation.html">Walkthrough</a>
           </div>
         </div>
+        <div class="media shots">
+          <img src="static/img/automation/signup.webp" alt="Customer sign-up page on a phone" width="640" height="1547" loading="lazy">
+          <img src="static/img/automation/trip-route-sheet.webp" alt="Trip page with confirmed customers and the route sheet" width="1600" height="1643" loading="lazy">
+        </div>
       </div>
+    </article>
+
+    <p class="mono" style="color:var(--faint);margin-top:1.5rem;text-align:right"><a href="portfolio.html">more on the portfolio page →</a></p>
+  </div>
+</section>
+
+<!-- WHAT I BUILD -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="label mono">// what I build</span>
+        <h2>If you do it by hand every week, it can probably be automated.</h2>
+      </div>
+    </div>
+    <div class="build reveal">
+      <div>
+        <span class="mono">booking</span>
+        <h3>Booking and payments</h3>
+        <p>Online booking with deposits or full payment, capacity limits, waivers and confirmations that send themselves.</p>
+      </div>
+      <div>
+        <span class="mono">scheduling</span>
+        <h3>Scheduling and route tools</h3>
+        <p>For mobile businesses: farriers, groomers, plow routes, delivery runs. Group customers by area and fill each trip.</p>
+      </div>
+      <div>
+        <span class="mono">internal tools</span>
+        <h3>Portals, dashboards, automations</h3>
+        <p>Replace the spreadsheet only you understand and the stack of group texts with a tool shaped around how you already work.</p>
+      </div>
+      <div class="web">
+        <span class="mono">websites</span>
+        <h3>And yes, the website</h3>
+        <p>Fast, hand-built, mobile-first. Usually the front door to one of the above. <a href="services.html" style="color:var(--accent)">Pricing</a></p>
+      </div>
+    </div>
+
+    <div class="strip reveal">
+      <div>
+        <strong>The hands-on side, around the Flathead</strong>
+        <p>Starlink installs, Wi-Fi and network cabling, VLANs and VPNs, security cameras with local AI detection and no cloud subscription, home labs and media servers. I run this stuff at my own place.</p>
+      </div>
+      <a class="btn btn-ghost" href="tech.html">Tech Setup</a>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section style="padding:70px 0;">
-  <div class="container">
-    <div class="text-center mb-5">
-      <div class="eyebrow">How It Works</div>
-      <div class="section-title">Straightforward from day one</div>
-    </div>
-    <div class="row g-4">
-      <div class="col-md-3 text-center">
-        <div class="process-num">01</div>
-        <h6 class="my-2">Tell Us What You Need</h6>
-        <p style="color:var(--muted);font-size:.85rem;">Fill out the quote form. We respond within one business day with a clear scope and flat price.</p>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="process-num">02</div>
-        <h6 class="my-2">50% to Start</h6>
-        <p style="color:var(--muted);font-size:.85rem;">Half down to lock your spot. We get to work immediately — no waiting, no runaround.</p>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="process-num">03</div>
-        <h6 class="my-2">Review &amp; Launch</h6>
-        <p style="color:var(--muted);font-size:.85rem;">You review, we revise, we launch. Balance due at go-live. Fast turnaround, no surprises.</p>
-      </div>
-      <div class="col-md-3 text-center">
-        <div class="process-num">04</div>
-        <h6 class="my-2">We Handle the Rest</h6>
-        <p style="color:var(--muted);font-size:.85rem;">Optional monthly plan — hosting, edits, and maintenance. You run your business, we keep your site running.</p>
+<!-- ME -->
+<section class="section" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap me">
+    <img src="static/media/spencer-ranch.webp" alt="Spencer Howe at Howe Ranch with a calf" width="560" height="747" loading="lazy">
+    <div>
+      <span class="label mono">// who you'd be working with</span>
+      <h2>One person. No account managers.</h2>
+      <p>I'm Spencer. You talk directly to the person writing your software. I spent 12 years as a diesel technician on heavy equipment and fleet vehicles, and I still work the same way: understand the system, find the actual problem, build the fix so it holds up.</p>
+      <p>Everything I build for clients, I've run on my own business first. The ranch is where it gets tested.</p>
+      <ul class="resume">
+        <li><span>service</span>United States Marine Corps</li>
+        <li><span>trade</span>12 years, diesel technician</li>
+        <li><span>degree</span>M.S. Software Engineering, AI Engineering</li>
+        <li><span>home</span>Kalispell, Montana</li>
+      </ul>
+      <div class="row" style="margin-top:1.8rem">
+        <a class="btn btn-ghost" href="about.html">More about me</a>
+        <a class="btn btn-ghost" href="https://github.com/Spencer-Howe" target="_blank" rel="noopener"><svg class="icon"><use href="#i-github"/></svg>GitHub</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section style="border-top:1px solid rgba(255,255,255,.06);padding:60px 0;text-align:center;">
-  <div class="container">
-    <div style="color:#f5b301;font-size:1.3rem;letter-spacing:4px;margin-bottom:12px;"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-    <h2 class="section-title mb-3">Worked with us?</h2>
-    <p style="color:var(--muted);max-width:440px;margin:0 auto 28px;line-height:1.7;">Reviews are how a small local business gets found. If we built something for you, a quick Google review means a lot.</p>
-    <a href="https://g.page/r/CZ-iKO1aoXFSEBM/review" target="_blank" rel="noopener" class="btn btn-outline-accent btn-lg"><i class="bi bi-google me-2"></i>Leave a Google Review</a>
   </div>
 </section>
 
 <!-- CTA -->
-<section style="background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);padding:70px 0;text-align:center;">
-  <div class="container">
-    <div class="eyebrow">Ready?</div>
-    <h2 class="section-title mb-3">Let's build something.</h2>
-    <p style="color:var(--muted);max-width:440px;margin:0 auto 32px;line-height:1.7;">No pressure, no jargon. Tell us what you're building and we'll put together a straight-forward quote.</p>
-    <a href="contact.html" class="btn btn-accent btn-lg">Get a Free Quote</a>
+<section class="section cta">
+  <div class="wrap">
+    <span class="label mono">// your turn</span>
+    <h2>What's the thing you're tired of doing by hand?</h2>
+    <p>Tell me how it works today. I'll come back within one business day with what I'd build and a flat price.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="contact.html">Start a project</a>
+      <a class="btn btn-ghost" href="tel:+14066078859"><svg class="icon"><use href="#i-telephone-fill"/></svg>(406) 607-8859</a>
+    </div>
   </div>
 </section>
 
+</main>
+
 <footer>
-  <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
-    <span>&copy; 2026 Howe Digital Systems — Montana · Serving clients nationwide · <a href="tel:+14066078859">(406) 607-8859</a></span>
-    <div class="d-flex gap-4">
-      <a href="https://www.instagram.com/howedigitalsystems/" target="_blank" rel="noopener" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61596608914893" target="_blank" rel="noopener" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-      <a href="https://www.linkedin.com/in/spencerhowe/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+  <div class="wrap">
+    <span>&copy; 2026 Howe Digital Systems · Kalispell, Montana · <a href="mailto:contact@howedigitalsystems.com">contact@howedigitalsystems.com</a></span>
+    <nav aria-label="Footer">
+      <a href="https://www.instagram.com/howedigitalsystems/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61596608914893" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
+      <a href="https://www.linkedin.com/in/spencerhowe/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+      <a href="https://github.com/Spencer-Howe" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"><use href="#i-github"/></svg></a>
+      <a href="https://g.page/r/CZ-iKO1aoXFSEBM/review" target="_blank" rel="noopener" aria-label="Leave a Google review"><svg class="icon"><use href="#i-google"/></svg></a>
       <a href="portfolio.html">Portfolio</a>
       <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
       <a href="terms.html">Terms</a>
-    </div>
+    </nav>
+    <p class="built">Hand-written HTML and CSS. No frameworks, no trackers. This page: <span id="weight">37 KB of HTML, CSS and JS</span>.</p>
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Live status: a no-cors fetch resolves if the server answered at all, so it's an honest "is it up" check.
+  document.querySelectorAll('[data-ping]').forEach(async (li) => {
+    const dot = li.querySelector('.dot'), ms = li.querySelector('.ms');
+    const t0 = performance.now();
+    try {
+      await fetch(li.dataset.ping, { mode: 'no-cors', cache: 'no-store', signal: AbortSignal.timeout(6000) });
+      dot.classList.add('up'); ms.textContent = Math.round(performance.now() - t0) + 'ms';
+    } catch { dot.classList.add('down'); ms.textContent = 'no reply'; }
+  });
+
+  // Play the KAPLOW loop only while it's on screen, and never for reduced-motion users.
+  const vid = document.querySelector('.phone video');
+  if (vid && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    new IntersectionObserver(([e]) => e.isIntersecting ? vid.play().catch(() => {}) : vid.pause(), { threshold: .35 }).observe(vid);
+  }
+
+  console.log('%cHey, you opened devtools.', 'font:700 16px system-ui;color:#00c2a8');
+  console.log('No framework here, just HTML, CSS and about 20 lines of JS. Source: https://github.com/Spencer-Howe\nIf you want to talk shop: contact@howedigitalsystems.com');
+</script>
 </body>
 </html>
